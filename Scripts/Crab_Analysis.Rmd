@@ -1,0 +1,17 @@
+---
+title: "Ghost Crab Analysis"
+output: html_document
+---
+## Concept
+Exploration of the Ghost Crab's burrow dimensions and burrow morphology
+
+### Goals of Crab Analysis Project 
+1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109)
+2. Analyze burrow dimensions based off different factors 
+3. Plot and graph visualizations
+
+### Required Packages
+```{r, eval=FALSE}
+library(dplyr)
+library(ggplot2)
+```
