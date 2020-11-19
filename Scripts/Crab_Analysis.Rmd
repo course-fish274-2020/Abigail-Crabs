@@ -30,14 +30,15 @@ library(tidyverse)
 ### Part 1
 Reading in [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data
 ```{r,echo=FALSE}
-burrow_dimensions_raw <- read.csv("Ghost_crab_burrow_architecture.csv")
+burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 head(burrow_dimensions_raw)
 ```
 
-**Selecting only the site, burrow depth, burrow temperature, and month of the year
-
-
-**Part 2: Analyzing data**
-
+Filtering burrow depth, burrow temperature, and month of the year for specific sites.
+```{r, echo=FALSE}
+burrow_site_depth_temp_month <- burrow_dimensions_raw %>%
+  select(burrow.depth, burrow.temperature, month)
+head(burrow_site_depth_temp_month)
+```
 
 
