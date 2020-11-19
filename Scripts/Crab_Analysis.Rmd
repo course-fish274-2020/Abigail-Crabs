@@ -14,4 +14,30 @@ Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 ```{r, eval=FALSE}
 library(dplyr)
 library(ggplot2)
+library(tidyverse)
+library(magrittr)
+library(knitr)
 ```
+
+```{r load-packages, include=FALSE}
+library(magrittr)
+library(knitr)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+```
+
+### Part 1
+Reading in [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data
+```{r,echo=FALSE}
+burrow_dimensions_raw <- read.csv("Ghost_crab_burrow_architecture.csv")
+head(burrow_dimensions_raw)
+```
+
+**Selecting only the site, burrow depth, burrow temperature, and month of the year
+
+
+**Part 2: Analyzing data**
+
+
+
