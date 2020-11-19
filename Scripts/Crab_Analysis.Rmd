@@ -34,11 +34,15 @@ burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 head(burrow_dimensions_raw)
 ```
 
-Filtering burrow depth, burrow temperature, and month of the year for specific sites.
-```{r, echo=FALSE}
+Selecting and filtering for specific sites, depth, temperature, and month.
+```{r,echo=FALSE}
 burrow_site_depth_temp_month <- burrow_dimensions_raw %>%
-  select(burrow.depth, burrow.temperature, month)
+  select(site, burrow.depth, burrow.temperature, month) %>%
+  filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
 head(burrow_site_depth_temp_month)
 ```
+
+### Part 2
+Plotting data
 
 
