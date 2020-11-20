@@ -6,9 +6,9 @@ output: html_document
 Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 
 ### Goals of Crab Analysis Project 
-1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109)
-2. Analyze burrow dimensions based off different factors 
-3. Plot and graph visualizations
+1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
+2. Select and filter through burrow dimensions data 
+2. Plot and graph selected data
 
 ### Required Packages
 ```{r, eval=FALSE}
@@ -23,8 +23,8 @@ library(knitr)
 library(tidyverse)
 ```
 
-### Part 1
-Reading in [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data.
+### Part I
+**Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).**
 ```{r,echo=FALSE, cache=TRUE}
 burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 head(burrow_dimensions_raw, n = 2)
@@ -38,8 +38,16 @@ burrow_site_depth_temp_month <- burrow_dimensions_raw %>%
 head(burrow_site_depth_temp_month)
 ```
 
-### Part 2
-Plotting data
+Selecting and filtering for specific burrow shape, sites, and temperature.
+```{r, echo=FALSE}
+burrow_shape_temperature_sites <- burrow_dimensions_raw %>%
+  select(site, burrow.shape, burrow.temperature) %>%
+  filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
+head(burrow_shape_temperature_sites)
+```
+
+### Part II
+**Looking for correlation between selected data**
 ```{r, echo=FALSE}
 burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y = burrow.temperature,
   color = month)) +
@@ -52,5 +60,16 @@ burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y
 print(burrow_data_plot)
 ```
 
+```{r, echo=FALSE}
+burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shape, y = burrow.temperature, color = burrow.shape)) +
+  geom_point() +
+  geom_jitter() +
+  facet_wrap(~site)+
+  labs(x = "Burrow Shape", y = "Burrow Temperature (°C)") +
+  labs(title = "Burrow Shape vs Temperature") +
+  theme(plot.title = element_text(hjust = 0.5))
+print(burrow_data_plot_2)
+```
 
-
+## Conclusion
+Further analysis is needed to conclude any findings.
