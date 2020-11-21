@@ -1,6 +1,8 @@
 ---
 title: "Ghost Crab Analysis"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 ## Concept
 Exploration of the Ghost Crab's burrow dimensions and burrow morphology
