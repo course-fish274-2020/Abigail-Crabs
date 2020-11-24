@@ -3,21 +3,27 @@ title: "Ghost Crab Analysis (Burrow Dimensions)"
 output: ioslides_presentation
 ---
 
-## Concept
+## Concept 
 Exploration of the Ghost Crab's burrow dimensions and burrow morphology
+
+<center>
+
+![Ghost Crab in its burrow](../Images/rsz_1rsz_1rsz_ocypode_quadrata_cahuita.jpg)
+
+</center>
 
 
 ## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
 2. Select and filter through burrow dimensions data 
-2. Plot and graph selected data
+3. Plot and graph selected data
 
 
 ## Required Packages for R
 - Tidyverse
 - Magrittr
 - Knitr
-```{r load-packages, echo=TRUE}
+```{r load-packages, fig.align='center', echo=TRUE}
 library(magrittr)
 library(knitr)
 library(tidyverse)
@@ -26,7 +32,7 @@ library(tidyverse)
 
 ## Part I
 Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).
-```{r,echo=FALSE, cache=TRUE}
+```{r,echo=FALSE, fig.align='center', cache=TRUE}
 burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 Burrow_tibble <- as_tibble(burrow_dimensions_raw[, 1:5])
 Burrow_table <- head(Burrow_tibble)
@@ -37,7 +43,7 @@ knitr::kable(Burrow_table,
 
 ## Part II (a) 
 Selecting and filtering for burrow **sites**, **depth**, **temperature**, and **month**.
-```{r,echo=FALSE, cache=TRUE}
+```{r,echo=FALSE, fig.align='center', cache=TRUE}
 burrow_site_depth_temp_month <- burrow_dimensions_raw %>%
   select(site, burrow.depth, burrow.temperature, month) %>%
   filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
@@ -48,10 +54,9 @@ knitr::kable(selected_data_table,
 ```
 
 
-
 ## Part II (b) 
 Selecting and filtering for burrow **shape**, **sites**, and **temperature**.
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 burrow_shape_temperature_sites <- burrow_dimensions_raw %>%
   select(site, burrow.shape, burrow.temperature) %>%
   filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
@@ -64,7 +69,7 @@ knitr::kable(depth_temp_site_table,
 
 ## Part III (a)
 Plotting burrow **sites** vs **depth** vs **temperature** vs **month**.
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y = burrow.temperature,
   color = month)) +
   geom_point() +
@@ -79,7 +84,7 @@ print(burrow_data_plot)
 
 ## Part III (b)
 Plotting burrow **sites** vs **shape** vs **temperature**.
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shape, y = burrow.temperature, color = burrow.shape)) +
   geom_point() +
   geom_jitter() +
@@ -89,6 +94,7 @@ burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shap
   theme(plot.title = element_text(hjust = 0.5))
 print(burrow_data_plot_2)
 ```
+
 
 ## Conclusion
 Further analysis is needed to conclude any findings.
