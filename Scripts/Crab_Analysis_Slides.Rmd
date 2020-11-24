@@ -3,12 +3,6 @@ title: "Ghost Crab Burrow Dimension Analysis"
 output: ioslides_presentation
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-
-
 
 ## Concept
 Exploration of the Ghost Crab's burrow dimensions and burrow morphology
@@ -37,10 +31,11 @@ library(tidyverse)
 
 
 ## Part I
-### Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).
-```{r,echo=FALSE, cache=TRUE} {.flexbox .vcenter}
+Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).
+```{r,echo=FALSE, cache=TRUE}
 burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
-head(burrow_dimensions_raw, n = 1)
+Burrow_tibble <- as_tibble(burrow_dimensions_raw)
+knitr::kable(head(Burrow_tibble[, 1:5]), "simple")
 ```
 
 
