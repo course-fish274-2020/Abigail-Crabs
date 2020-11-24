@@ -1,5 +1,5 @@
 ---
-title: "Ghost Crab Burrow Dimensions Analysis"
+title: "Ghost Crab Burrow Dimension Analysis"
 output: ioslides_presentation
 ---
 
@@ -7,35 +7,45 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+
+
+
 ## Concept
 Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 
 
-## Goals of Crab Analysis Project 
+
+
+## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
 2. Select and filter through burrow dimensions data 
 2. Plot and graph selected data
 
 
-## Required Packages
 
+
+## Required Packages for R
 - Tidyverse
 - Magrittr
 - Knitr
-```{r load-packages, message=FALSE}
+```{r load-packages, message=FALSE, cache=TRUE}
 library(magrittr)
 library(knitr)
 library(tidyverse)
 ```
 
-## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
+
+## Part I
+### Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).
+```{r,echo=FALSE, cache=TRUE} {.flexbox .vcenter}
+burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
+head(burrow_dimensions_raw, n = 1)
 ```
 
-## Slide with Plot
 
+
+## Slide with Plot
 ```{r pressure}
 plot(pressure)
 ```
