@@ -17,7 +17,7 @@ Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 - Tidyverse
 - Magrittr
 - Knitr
-```{r load-packages, include=FALSE}
+```{r load-packages, echo=TRUE}
 library(magrittr)
 library(knitr)
 library(tidyverse)
