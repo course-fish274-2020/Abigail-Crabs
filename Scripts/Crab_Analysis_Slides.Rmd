@@ -1,5 +1,5 @@
 ---
-title: "Ghost Crab Analysis"
+title: "Ghost Crab Burrow Dimensions Analysis"
 output: ioslides_presentation
 ---
 
@@ -7,17 +7,26 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Concept
+Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## Goals of Crab Analysis Project 
+1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
+2. Select and filter through burrow dimensions data 
+2. Plot and graph selected data
 
-## Slide with Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+## Required Packages
+
+- Tidyverse
+- Magrittr
+- Knitr
+```{r load-packages, message=FALSE}
+library(magrittr)
+library(knitr)
+library(tidyverse)
+```
 
 ## Slide with R Output
 
