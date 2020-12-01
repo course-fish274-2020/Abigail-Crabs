@@ -1,22 +1,48 @@
 ---
-title: "Ghost Crab Analysis (Burrow Dimensions)"
+title: "Burrow Dimension Analysis of the Ghost Crab"
 output: ioslides_presentation
 ---
 
-## Concept 
-Exploration of the Ghost Crab's burrow dimensions and burrow morphology
 
-<center>
+## Ghost Crab Background 
+Ghost crabs are common shore crabs that live in tropical areas in the world. They inhabit burrows within intertidal zones and are scavengers and predators of small animals. 
+```{r, echo=FALSE, out.width="75%", fig.cap="Ghost Crab Habitat"}
+knitr::include_graphics("../Images/Ocypode_ceratophthlamus_dist.jpg")
+```
 
-![Ghost Crab in its burrow](../Images/rsz_1rsz_1rsz_ocypode_quadrata_cahuita.jpg)
 
-</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
 2. Select and filter through burrow dimensions data 
 3. Plot and graph selected data
+<center>
+
+![Ghost Crab in its burrow](../Images/rsz_1rsz_1rsz_ocypode_quadrata_cahuita.jpg)
+
+</center>
 
 
 ## Required Packages for R
