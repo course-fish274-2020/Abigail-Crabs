@@ -5,10 +5,10 @@ output: ioslides_presentation
 
 
 ## Project Goals 
-1. Determine the correlation between burrow shape and depth, and the burrow temperature and humidity.
-Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
+1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
 2. Select and filter through burrow dimensions data 
 3. Plot and graph selected data
+4. Determine the correlation between burrow shape and depth, and the burrow temperature and humidity.
 
 
 ## Ghost Crab Background
