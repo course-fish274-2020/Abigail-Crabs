@@ -1,7 +1,21 @@
 ---
-title: "Burrow Dimension Analysis of the Ghost Crab"
+title: "Human Impact on Ghost Crab Burrow Dimensions"
 output: ioslides_presentation
 ---
+
+
+
+
+## Concept
+- Ghost crab population size declines under high human impact
+  - Respond strongly to impacts so good indicator of effective beach management
+- Human impact on burrow dimensions is still being debated
+  - Data collected from 20 beaches in South Carolina, USA to determine this impact
+  
+```{r, echo=FALSE, out.width="45%"}
+knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
+```
+
 
 
 ## Project Goals 
@@ -11,13 +25,10 @@ output: ioslides_presentation
 4. Determine the correlation between burrow shape and depth, and the burrow temperature and humidity.
 
 
-## Ghost Crab Background
-Ghost crabs are common shore crabs that live in tropical areas in the world. They inhabit burrows within intertidal zones and are scavengers and predators of small animals. 
-
 <center>
 
 ```{r, echo=FALSE, out.width="90%", fig.cap="Ghost Crab Habitat"}
-knitr::include_graphics("../Images/Ocypode_ceratophthlamus_dist.jpg")
+knitr::include_graphics("../Images/Slide Images/Ocypode_ceratophthlamus_dist.jpg")
 ```
 
 
