@@ -4,14 +4,11 @@ output: ioslides_presentation
 ---
 
 
-
-
 ## Concept
 - Ghost crab population size declines under high human impact
   - Respond strongly to impacts so good indicator of effective beach management
 - Human impact on burrow dimensions is still being debated
   - Data collected from 20 beaches in South Carolina, USA to determine this impact
-  
 ```{r, echo=FALSE, out.width="45%"}
 knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
@@ -20,35 +17,23 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 
 ## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
-2. Select and filter through burrow dimensions data 
-3. Plot and graph selected data
-4. Determine the correlation between burrow shape and depth, and the burrow temperature and humidity.
-
-
-<center>
-
-```{r, echo=FALSE, out.width="90%", fig.cap="Ghost Crab Habitat"}
-knitr::include_graphics("../Images/Slide Images/Ocypode_ceratophthlamus_dist.jpg")
-```
-
-
-</center>
-
+2. Determine human impact on ghost crab burrow morphology
+3. Present findings in way that is understandable
 
 
 ## Required Packages for R
 - Tidyverse
 - Magrittr
 - Knitr
-```{r load-packages, fig.align='center', echo=TRUE}
+```{r load-packages, fig.align='center', echo=FALSE}
 library(magrittr)
 library(knitr)
 library(tidyverse)
 ```
 
 
-## Part I
-Import data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109).
+# Importing Data
+[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected between May and September of 2016.
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
 burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 Burrow_tibble <- as_tibble(burrow_dimensions_raw[, 1:5])
