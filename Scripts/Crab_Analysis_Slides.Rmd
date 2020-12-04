@@ -14,7 +14,6 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
 
 
-
 ## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
 2. Analyze human impact on ghost crab burrow dimensions and architecture
@@ -36,27 +35,65 @@ library(tidyverse)
 [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and Sept. of 2016.
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
 burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
-Burrow_tibble <- as_tibble(burrow_raw_data[, 1:5])
-Burrow_table <- head(Burrow_tibble)
-knitr::kable(Burrow_table, 
+dimensions_tibble <- as_tibble(burrow_raw_data[, 1:5])
+dimensions_table <- head(dimensions_tibble)
+knitr::kable(dimensions_table, 
              col.names = c('Site', 'Impact Types', 'Burrow Shape', 'Beach Slope', 'Sand Compaction'))
 ```
 
 
 ## Filtering and Selecting Data
-Opening diameter and impact types
+Burrow opening diameter and impact types
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
 diameter_impact <- burrow_raw_data %>%
   select(site, average.burrow.diameter, impact.types)
 diameter_impact_tibble <- as_tibble(diameter_impact)
 diameter_impact_table <- head(diameter_impact_tibble)
 knitr::kable(diameter_impact_table, 
-             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
+             col.names = c('Site', 'Opening Diameter (mm)', 'Impacts'))
 ```
 
 
 ## Filtering and Selecting Data
 Burrow density and impact types
+```{r}
+density_impact <- burrow_raw_data %>%
+  select(site, average.burrow.diameter, impact.types)
+density_impact_tibble <- as_tibble(density_impact)
+density_impact_table <- head(density_impact_tibble)
+knitr::kable(density_impact_table, 
+             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
+```
+
+
+# Filtering and Selecting Data
+Burrow length and impact type
+```{r}
+length_impact <- burrow_raw_data %>%
+  select(site, burrow.length, impact.types)
+length_impact_tibble <- as_tibble(length_impact)
+length_impact_table <- head(length_impact_tibble)
+knitr::kable(length_impact_table, 
+             col.names = c('Site', 'Length (mm)', 'Impact Type'))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
