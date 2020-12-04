@@ -1,5 +1,5 @@
 ---
-title: "Human Impact on Ghost Crab Burrow Dimensions"
+title: "Human Impact on Ghost Crab Burrows"
 output: ioslides_presentation
 ---
 
@@ -8,7 +8,7 @@ output: ioslides_presentation
 - Ghost crab population size declines under high human impact
   - Respond strongly to impacts so good indicator of effective beach management
 - Human impact on burrow dimensions is still being debated
-  - Data collected from 20 beaches in South Carolina, USA to determine this impact
+  - Data was collected to determine this impact
 ```{r, echo=FALSE, out.width="45%"}
 knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
@@ -17,91 +17,40 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 
 ## Project Goals 
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
-2. Determine human impact on ghost crab burrow morphology
-3. Present findings in way that is understandable
+2. Analyze human impact on ghost crab burrow dimensions and architecture
+3. Present findings/data in a way that is clean and understandable
 
 
-## Required Packages for R
+## Required Packages
 - Tidyverse
 - Magrittr
 - Knitr
-```{r load-packages, fig.align='center', echo=FALSE}
+```{r load-packages, echo=FALSE}
 library(magrittr)
 library(knitr)
 library(tidyverse)
 ```
 
 
-# Importing Data
-[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected between May and September of 2016.
+## Importing Data
+[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and September of 2016.
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
-burrow_dimensions_raw <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
-Burrow_tibble <- as_tibble(burrow_dimensions_raw[, 1:5])
+burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
+Burrow_tibble <- as_tibble(burrow_raw_data[, 1:5])
 Burrow_table <- head(Burrow_tibble)
 knitr::kable(Burrow_table, 
              col.names = c('Site', 'Impact Types', 'Burrow Shape', 'Beach Slope', 'Sand Compaction'))
 ```
 
 
-## Part II (a) 
-Selecting and filtering for burrow **sites**, **depth**, **temperature**, and **month**.
+## Filtering Data
+Selecting and filtering for  Opening diameter (mm) vs. Impact types
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
-burrow_site_depth_temp_month <- burrow_dimensions_raw %>%
-  select(site, burrow.depth, burrow.temperature, month) %>%
-  filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
-selected_data_tibble <- as_tibble(burrow_site_depth_temp_month)
-selected_data_table <- head(selected_data_tibble)
-knitr::kable(selected_data_table, 
-             col.names = c('Site', 'Burrow Depth (mm)', 'Burrow Temperature (°C)', 'Month'))
+diameter_impact <- burrow_raw_data %>%
+  select(site, average.burrow.diameter, impact.types)
+diameter_impact_tibble <- as_tibble(diameter_impact)
+diameter_impact_table <- head(diameter_impact_tibble)
+knitr::kable(diameter_impact_table, 
+             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
 ```
-
-
-## Part II (b) 
-Selecting and filtering for burrow **shape**, **sites**, and **temperature**.
-```{r, echo=FALSE, fig.align='center'}
-burrow_shape_temperature_sites <- burrow_dimensions_raw %>%
-  select(site, burrow.shape, burrow.temperature) %>%
-  filter(site == "Debidue Island" | site == "Folly Beach " | site == "Pawleys Island 1" | site == "Edisto Beach")
-depth_temp_site_tibble <- as_tibble(burrow_shape_temperature_sites)
-depth_temp_site_table<- head(depth_temp_site_tibble)
-knitr::kable(depth_temp_site_table,
-             col.names = c('Site', 'Burrow Shape', 'Burrow Temperature (°C)'))
-```
-
-
-## Part III (a)
-Plotting burrow **sites** vs **depth** vs **temperature** vs **month**.
-```{r, echo=FALSE, fig.align='center'}
-burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y = burrow.temperature,
-  color = month)) +
-  geom_point() +
-  facet_wrap(~site) +
-  geom_smooth(method = "loess") +
-  labs(x = "Burrow Depth (mm)", y = "Burrow Temperature (°C)") +
-  labs(title = "Burrow Depth vs Temperature") +
-  theme(plot.title = element_text(hjust = 0.5))
-print(burrow_data_plot)
-```
-
-
-## Part III (b)
-Plotting burrow **sites** vs **shape** vs **temperature**.
-```{r, echo=FALSE, fig.align='center'}
-burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shape, y = burrow.temperature, color = burrow.shape)) +
-  geom_point() +
-  geom_jitter() +
-  facet_wrap(~site)+
-  labs(x = "Burrow Shape", y = "Burrow Temperature (°C)") +
-  labs(title = "Burrow Shape vs Temperature") +
-  theme(plot.title = element_text(hjust = 0.5))
-print(burrow_data_plot_2)
-```
-
-
-## Conclusion
-Further analysis is needed to conclude any findings.
-
-
-
-
 
