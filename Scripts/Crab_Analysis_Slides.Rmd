@@ -33,7 +33,7 @@ library(tidyverse)
 
 
 ## Importing Data
-[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and September of 2016.
+[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and Sept. of 2016.
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
 burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 Burrow_tibble <- as_tibble(burrow_raw_data[, 1:5])
@@ -43,8 +43,8 @@ knitr::kable(Burrow_table,
 ```
 
 
-## Filtering Data
-Selecting and filtering for  Opening diameter (mm) vs. Impact types
+## Filtering and Selecting Data
+Opening diameter and impact types
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
 diameter_impact <- burrow_raw_data %>%
   select(site, average.burrow.diameter, impact.types)
@@ -53,4 +53,14 @@ diameter_impact_table <- head(diameter_impact_tibble)
 knitr::kable(diameter_impact_table, 
              col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
 ```
+
+
+## Filtering and Selecting Data
+Burrow density and impact types
+
+
+
+
+
+
 
