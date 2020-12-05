@@ -136,4 +136,45 @@ knitr::kable(length_impact_table,
 
 
 
+## Part III (a)
+Plotting burrow **sites** vs **depth** vs **temperature** vs **month**.
+```{r, echo=FALSE, fig.align='center'}
+burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y = burrow.temperature,
+                                                             color = month)) +
+  geom_point() +
+  facet_wrap(~site) +
+  geom_smooth(method = "loess") +
+  labs(x = "Burrow Depth (mm)", y = "Burrow Temperature (°C)") +
+  labs(title = "Burrow Depth vs Temperature") +
+  theme(plot.title = element_text(hjust = 0.5))
+print(burrow_data_plot)
+```
+
+
+## Part III (b)
+Plotting burrow **sites** vs **shape** vs **temperature**.
+```{r, echo=FALSE, fig.align='center'}
+burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shape, y = burrow.temperature, color = burrow.shape)) +
+  geom_point() +
+  geom_jitter() +
+  facet_wrap(~site)+
+  labs(x = "Burrow Shape", y = "Burrow Temperature (°C)") +
+  labs(title = "Burrow Shape vs Temperature") +
+  theme(plot.title = element_text(hjust = 0.5))
+print(burrow_data_plot_2)
+```
+
+
+## Conclusion
+Further analysis is needed to conclude any findings.
+
+
+
+
+
+
+
+
+
+
 
