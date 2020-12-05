@@ -185,7 +185,7 @@ plot(size_avg_plot)
 ```
 
 ## Burrow Density vs. Quadrat
-```{r}
+```{r, echo=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 density_quadrat_raw <- read.csv("../Data/Burrow_density_impact_types.csv")
 #Selecting data
@@ -211,7 +211,24 @@ density_quadrat_plot <- ggplot(density_quadrat,
 plot(density_quadrat_plot)
 ```
 
+# Conclusion
+What can we conclude based off this analysis
 
+## Conclusion
+```{r, echo=FALSE, figures-side, fig.show="hold", out.width="50%"}
+plot(diam_avg_plot)
+plot(dens_avg_plot)
+plot(size_avg_plot)
+plot(density_quadrat_plot)
+```
+
+## Conlusion
+
+1. Even small human disturbances cause a change in Ghost Crab burrowing behavior
+
+2. This burrowing behavior change makes studying Ghost Crab burrows an effective determinant of beach management
+
+# Questions?
 
 
 
