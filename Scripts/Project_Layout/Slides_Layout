@@ -1,53 +1,52 @@
 Title: Human Impact on Ghost Crab Burrow Altercation
 
 
------ Concept ----- (done)
+----- Concept -----
 - Ghost crab population size declines under high human impact
   - Respond strongly to impacts so good indicator of effective beach management
 - Human impact on burrow dimensions is still being debated
   - Data collected from 20 beaches in South Carolina, USA to determine this impact
 
 
------ Goals ----- (done)
+----- Goals -----
 1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109)
 2. Determine human impact on ghost crab burrow morphology
 3. Present findings in way that is understandable
 
 
 
----- Required packages ----- (done)
+---- Required packages -----
 - Tidyverse
 - Magrittr
 - Knitr
 
 
----- Importing Data ----- (done)
+---- Importing Data -----
 Ghost Crab Burrow Morphology and Distribution was collected between May and Septemeber of 2016
 
 
 
 ---- Filtering Data -----
-Opening diameter (mm) vs. Impact types
-Density (m^2) vs. Impact types
-Length (mm) vs. Impact types
+Opening diameter (mm) vs. Impact types (done)
+Density (m^2) vs. Impact types __________________________
+Length (mm) vs. Impact types ______________________________
 
 
 ---- Plotting Data -----
-(Bar chart)
-Opening diameter (mm) vs. Impact types
-Density (m^2) vs. Impact types
-Length (mm) vs. Impact types
+Opening diameter (mm) vs. Impact types (done)
+Density (m^2) vs. Impact types ___________________________
+Length (mm) vs. Impact types _______________________________
 
 
 
----- Conclusion ----- (done)
+---- Conclusion -----
   This analysis determines that there is a high correlation between human impact and altercation of ghost crab burrows.
   An increase in human disturbance leads to deeper and smaller burrows.
 
 
 
 
-Sources
+Sources ___________________________________
 CREATE FOOTNOTES
 
 
