@@ -8,7 +8,7 @@ output: ioslides_presentation
 - Ghost crab population size declines under high human impact
   - Respond strongly to impacts so good indicator of effective beach management
 - Human impact on burrow dimensions is still being debated
-  - Data was collected to determine this impact
+  - [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and Sept. of 2016.
 ```{r, echo=FALSE, out.width="45%"}
 knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
@@ -35,38 +35,47 @@ library(tidyverse)
 
 
 ## Importing Data
-[Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) data was collected in South Carolina between May and Sept. of 2016.
+Data used in analysis comes from three datasets  
+
+1. [Burrow size among impact types](https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581102) 
+
+2. [Burrow density among impact types](https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581114) 
+
+3. [Burrow architecture](https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581108)
+
+
+
+
+
+# Part I
+Looking at human impact on burrow opening diameter
+
+## Opening Diameter vs. Impact
+Filtering and selecting data
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
+#Reading in data
 burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
-dimensions_tibble <- as_tibble(burrow_raw_data[, 1:5])
-dimensions_table <- head(dimensions_tibble)
-knitr::kable(dimensions_table, 
-             col.names = c('Site', 'Impact Types', 'Burrow Shape', 'Beach Slope', 'Sand Compaction'))
-```
-
-
-
-## Filtering and Selecting Data
-Burrow opening diameter and impact types
-```{r,echo=FALSE, fig.align='center', cache=TRUE}
+#Selecting data
 diameter_impact <- burrow_raw_data %>%
   arrange(desc(average.burrow.diameter)) %>%
   select(site, average.burrow.diameter, impact.types)
+#Showing tibble table
 diameter_impact_tibble <- as_tibble(diameter_impact)
 diameter_impact_table <- head(diameter_impact_tibble)
 knitr::kable(diameter_impact_table, 
-             col.names = c('Site', 'Opening Diameter (mm)', 'Impacts'))
+             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
 ```
 
-## Plotting Data
+## Opening Diameter vs. Impact
+Graphing data
 ```{r,echo=FALSE, fig.align='center', cache=TRUE}
-#Selecting data
+#Selecting data to graph
 diameter_average <- diameter_impact %>% 
   group_by(impact.types) %>%
   summarise(avg = median(average.burrow.diameter)) 
 Diam_avg <- data.frame(diameter_average) %>%
   arrange(desc(impact.types))
-#Plotting data
+#Creating bar plot
 diam_avg_plot <- ggplot(Diam_avg, 
                         aes(x = reorder(impact.types, -avg), 
                             y = avg, fill = impact.types)) +
@@ -83,35 +92,65 @@ diam_avg_plot <- ggplot(Diam_avg,
   geom_errorbar(aes(ymin = avg, ymax = avg), 
                 color = "#22292F", width = .3) +
   scale_y_continuous(expand = c(0, 0))
-
+#Plot graph
 plot(diam_avg_plot)
 ```
 
 
 
-## Filtering and Selecting Data
-Burrow density and impact types
-```{r}
-density_impact <- burrow_raw_data %>%
-  select(site, average.burrow.diameter, impact.types)
+
+
+# Part II
+Looking at human impact on burrow density 
+
+## Density vs. Impact
+Filtering and selecting data
+```{r,echo=FALSE, fig.align='center', cache=TRUE}
+#Reading in data
+burrow_density_raw_data <- read.csv("../Data/Burrow_density_impact_types.csv")
+#Selecting data
+density_impact <- burrow_density_raw_data %>%
+  arrange(desc(burrow.density)) %>%
+  select(site, impact.types, burrow.density)
+#Showing tibble table
 density_impact_tibble <- as_tibble(density_impact)
 density_impact_table <- head(density_impact_tibble)
 knitr::kable(density_impact_table, 
-             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
+             col.names = c('Site', 'Impact Type', 'Burrow Density m^-2'))
+```
+
+## Density vs. Impact
+Graphing data
+```{r,echo=FALSE, fig.align='center', cache=TRUE}
+#Selecting data to graph
+density_average <- density_impact %>% 
+  group_by(impact.types) %>%
+  summarise(avg = median(burrow.density)) 
+Dens_avg_df <- data.frame(density_average) %>%
+  arrange(desc(impact.types))
+#Creating bar plot
+dens_avg_plot <- ggplot(Dens_avg_df, 
+                        aes(x = reorder(impact.types, -avg), 
+                            y = avg, fill = impact.types)) +
+  geom_bar(stat = "identity", alpha = 0.4) +
+  theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.border = element_blank(), 
+        axis.line = element_line()) +
+  ggtitle("Burrow Density (m^-2) vs Human Impact") +
+  theme(plot.title = element_text(hjust = 0.9)) +
+  labs(y="Burrow Density (m^-2)", 
+       x = "Human Impact") +
+  geom_errorbar(aes(ymin = avg, ymax = avg), 
+                color = "#22292F", width = .3) +
+  scale_y_continuous(expand = c(0, 0))
+#Plot graph
+plot(dens_avg_plot)
 ```
 
 
 
-# Filtering and Selecting Data
-Burrow length and impact type
-```{r}
-length_impact <- burrow_raw_data %>%
-  select(site, burrow.length, impact.types)
-length_impact_tibble <- as_tibble(length_impact)
-length_impact_table <- head(length_impact_tibble)
-knitr::kable(length_impact_table, 
-             col.names = c('Site', 'Length (mm)', 'Impact Type'))
-```
 
 
 
@@ -136,37 +175,6 @@ knitr::kable(length_impact_table,
 
 
 
-## Part III (a)
-Plotting burrow **sites** vs **depth** vs **temperature** vs **month**.
-```{r, echo=FALSE, fig.align='center'}
-burrow_data_plot <- ggplot(burrow_site_depth_temp_month, aes(x = burrow.depth, y = burrow.temperature,
-                                                             color = month)) +
-  geom_point() +
-  facet_wrap(~site) +
-  geom_smooth(method = "loess") +
-  labs(x = "Burrow Depth (mm)", y = "Burrow Temperature (°C)") +
-  labs(title = "Burrow Depth vs Temperature") +
-  theme(plot.title = element_text(hjust = 0.5))
-print(burrow_data_plot)
-```
-
-
-## Part III (b)
-Plotting burrow **sites** vs **shape** vs **temperature**.
-```{r, echo=FALSE, fig.align='center'}
-burrow_data_plot_2 <- ggplot(burrow_shape_temperature_sites, aes(x = burrow.shape, y = burrow.temperature, color = burrow.shape)) +
-  geom_point() +
-  geom_jitter() +
-  facet_wrap(~site)+
-  labs(x = "Burrow Shape", y = "Burrow Temperature (°C)") +
-  labs(title = "Burrow Shape vs Temperature") +
-  theme(plot.title = element_text(hjust = 0.5))
-print(burrow_data_plot_2)
-```
-
-
-## Conclusion
-Further analysis is needed to conclude any findings.
 
 
 
