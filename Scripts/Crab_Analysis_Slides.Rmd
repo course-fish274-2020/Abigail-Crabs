@@ -48,6 +48,16 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
 
 
+## Important Information
+Information needed to interpret graphs
+
+
+Variables
+
+- HI: High human impact
+- HV: High human and vehicle impact
+- MI: Moderate human impact
+- P: Pristine sites (little to no human impact)
 
 
 
@@ -218,7 +228,7 @@ plot(density_quadrat_plot)
 ```
 
 # Conclusion
-What can we conclude based off this analysis?
+What can we conclude based off these graphs?
 
 ## Conclusion
 ```{r, echo=FALSE, figures-side, fig.show="hold", out.width="50%"}
