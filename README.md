@@ -1,9 +1,9 @@
 # Abigail-Crabs
 
 # Purpose
-1. Load data from [Ghost Crab Burrow Morphology and Distribution](https://doi.org/10.6084/m9.figshare.6895109) 
-2. Analyze human impact on ghost crab burrow dimensions and architecture
-3. Present findings/data in a way that is clean and understandable
+1. Analyze ghost crab burrow [data](https://doi.org/10.6084/m9.figshare.6895109) 
+2. Determine if there is a correlation between burrow dimensions and human disturbance
+3. Present findings in a way that is understandable
 
 # Required Packages
 - Tidyverse
