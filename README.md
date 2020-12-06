@@ -19,7 +19,7 @@
   - Website for burrow size and impact
 - https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581114 
   - Website for burrow density and impact
-- ttps://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581108 
+- https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581108 
   - Website for burrow architecture
 - ./Images/Slide Images/South_Carolina_Beaches.jpg
   - Image of South Carolina beaches
