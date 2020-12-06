@@ -51,7 +51,6 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ## Important Information
 Information needed to interpret graphs
 
-
 Variables
 
 - HI: High human impact
