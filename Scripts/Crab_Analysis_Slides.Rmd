@@ -24,12 +24,12 @@ knitr::include_graphics("../Images/Slide Images/rsz_1rsz_1rsz_ocypode_quadrata_c
 
 ## Required Packages
 - Tidyverse
-- Magrittr
 - Knitr
 ```{r load-packages, echo=FALSE, cache=TRUE}
 library(knitr)
 library(tidyverse)
 ```
+
 
 
 
@@ -59,10 +59,10 @@ Variables
 
 
 
+
+
 # Part I
 Looking at human impact on burrow opening diameter
-
-
 
 ## Opening Diameter vs. Impact
 Filtering and selecting data
@@ -76,7 +76,7 @@ diameter_impact <- burrow_raw_data %>%
 #Showing tibble table
 diameter_impact_tibble <- as_tibble(diameter_impact)
 diameter_impact_table <- head(diameter_impact_tibble)
-knitr::kable(diameter_impact_table, 
+knitr::kable(diameter_impact_table, align = "lrr",
              col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
 ```
 
