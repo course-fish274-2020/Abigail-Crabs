@@ -8,7 +8,7 @@ output: ioslides_presentation
 - Ghost crab populations strongly decline under high human disturbance
     - Population size was a good indicator of effective beach management
 - Are ghost crab burrows also a good indicator effective beach management?
-```{r, echo=FALSE, out.width="45%"}
+```{r, echo=FALSE, out.width= "55%", out.extra='style="float:right; padding:10px"'}
 knitr::include_graphics("../Images/Slide Images/rsz_1rsz_1rsz_ocypode_quadrata_cahuita.jpg")
 ```
 
@@ -43,7 +43,7 @@ Data used in analysis comes from three datasets:
 
 3. [Burrow architecture](https://figshare.com/articles/Impacts_of_human_disturbance_on_ghost_crab_burrow_morphology_and_distribution_on_sandy_shore/6895109/1?file=12581108)
 
-```{r, echo=FALSE, out.width="45%"}
+```{r, echo=FALSE, out.width= "40%", out.extra='style="float:right"'}
 knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ```
 
@@ -67,7 +67,7 @@ Looking at human impact on burrow opening diameter
 
 ## Opening Diameter vs. Impact
 Filtering and selecting data
-```{r,echo=FALSE, fig.align='center', cache=TRUE}
+```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 #Selecting data
@@ -83,7 +83,7 @@ knitr::kable(diameter_impact_table,
 
 ## Opening Diameter vs. Impact
 Graphing data
-```{r,echo=FALSE, fig.align='center', cache=TRUE}
+```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Selecting data to graph
 diameter_average <- diameter_impact %>% 
   group_by(impact.types) %>%
@@ -120,7 +120,7 @@ Looking at human impact on burrow density
 
 ## Density vs. Impact
 Filtering and selecting data
-```{r,echo=FALSE, fig.align='center', cache=TRUE}
+```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 burrow_density_raw_data <- read.csv("../Data/Burrow_density_impact_types.csv")
 #Selecting data
@@ -143,7 +143,7 @@ Dens_avg_df <- data.frame(density_average) %>%
 ## Density vs. Impact
 Graphing data
 
-```{r,echo=FALSE, fig.align='center', cache=TRUE}
+```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Creating bar plot
 dens_avg_plot <- ggplot(Dens_avg_df, 
                         aes(x = reorder(impact.types, -avg), 
@@ -169,11 +169,12 @@ plot(dens_avg_plot)
 
 
 # Part III
-Looking at human impact on burrows as they get closer to human development
+Looking at human impact on burrows as they get closer to human development.
+
 
 ## Burrow Size vs. Quadrat
 Graphing data
-```{r, echo=FALSE, fig.align='center', cache=TRUE}
+```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 size_impact_raw_data <- read.csv("../Data/Burrow_ size_impact_types.csv")
 #Selecting data
@@ -181,10 +182,10 @@ size_impact <- size_impact_raw_data %>%
   group_by(quadrat, impact.types) %>%
   summarise(avg = median(burrow.size))
  #Creating bar plot
-size_avg_plot <- ggplot(size_impact, 
-                        aes(x = reorder(quadrat, -avg), 
-                            y = avg, fill = impact.types)) +
-  geom_bar(stat = "identity", position = "dodge", alpha = 0.4) +
+size_avg_plot <- ggplot(size_impact) +
+  geom_bar(aes(x = reorder(quadrat, -avg), 
+                            y = avg, fill = impact.types),
+           stat = "identity", position = "dodge", alpha = 0.4) +
   theme_bw() + 
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(), 
@@ -200,7 +201,7 @@ plot(size_avg_plot)
 ```
 
 ## Burrow Density vs. Quadrat
-```{r, echo=FALSE, fig.align='center', cache=TRUE}
+```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 density_quadrat_raw <- read.csv("../Data/Burrow_density_impact_types.csv")
 #Selecting data
@@ -230,7 +231,7 @@ plot(density_quadrat_plot)
 What can we conclude based off these graphs?
 
 ## Conclusion
-```{r, echo=FALSE, figures-side, fig.show="hold", out.width="50%"}
+```{r, echo=FALSE, message=FALSE, figures-side, fig.show="hold", out.width="50%"}
 plot(diam_avg_plot)
 plot(dens_avg_plot)
 plot(size_avg_plot)
