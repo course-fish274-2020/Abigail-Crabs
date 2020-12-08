@@ -27,7 +27,6 @@ knitr::include_graphics("../Images/Slide Images/rsz_1rsz_1rsz_ocypode_quadrata_c
 - Magrittr
 - Knitr
 ```{r load-packages, echo=FALSE, cache=TRUE}
-library(magrittr)
 library(knitr)
 library(tidyverse)
 ```
