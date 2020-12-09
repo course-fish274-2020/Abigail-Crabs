@@ -17,7 +17,7 @@ knitr::include_graphics("../Images/Slide Images/rsz_1rsz_1rsz_ocypode_quadrata_c
 ## Project Goals 
 1. Analyze ghost crab burrow [data](https://doi.org/10.6084/m9.figshare.6895109) 
     - Collected in South Carolina between May and Sept. of 2016
-2. Determine if there is a correlation between burrow dimensions and human disturbance
+2. Determine if there is a [correlation](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209977#:~:text=Ghost%20crabs%20have%20been%20widely,for%20management%20and%20conservation%20purposes.&text=We%20also%20found%20that%20ghost,burrows%20on%20heavily%20impacted%20beaches.) between burrow dimensions and human disturbance
 3. Present findings in a way that is understandable
 
 
