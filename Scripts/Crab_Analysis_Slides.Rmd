@@ -183,9 +183,9 @@ plot(dens_avg_plot)
 # Part III
 Looking at human impact on burrows as they get closer to human development.
 
-
 ## Burrow Size vs. Quadrat
-Graphing data
+Quadrat: area of the beach that gets increasingly closer to human development
+
 ```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 size_impact_raw_data <- read.csv("../Data/Burrow_ size_impact_types.csv")
@@ -193,7 +193,27 @@ size_impact_raw_data <- read.csv("../Data/Burrow_ size_impact_types.csv")
 size_impact <- size_impact_raw_data %>%
   group_by(quadrat, impact.types) %>%
   summarise(avg = median(burrow.size))
- #Creating bar plot
+kbl(size_impact_select, align = "llr") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  kable_paper() %>%
+  scroll_box(width = "500px", height = "200px") %>%
+  kable_styling(fixed_thead = T)
+```
+
+```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
+#Reading in data
+density_quadrat_raw <- read.csv("../Data/Burrow_density_impact_types.csv")
+#Selecting data
+density_quadrat <- density_quadrat_raw %>%
+  group_by(quadrat, impact.types) %>%
+  summarise(avg = median(burrow.density))
+```
+
+
+## Burrow Size and Density vs. Quadrat
+Graphing data
+```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
+ #Creating bar plot Size
 size_avg_plot <- ggplot(size_impact) +
   geom_bar(aes(x = reorder(quadrat, -avg), 
                             y = avg, fill = impact.types),
@@ -211,16 +231,13 @@ size_avg_plot <- ggplot(size_impact) +
 #Plot graph
 plot(size_avg_plot)
 ```
+```{r}
+#Creating bar graph for density
 
-## Burrow Density vs. Quadrat
+```
+
 ```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
-#Reading in data
-density_quadrat_raw <- read.csv("../Data/Burrow_density_impact_types.csv")
-#Selecting data
-density_quadrat <- density_quadrat_raw %>%
-  group_by(quadrat, impact.types) %>%
-  summarise(avg = median(burrow.density))
-#Creating bar plot
+#Creating bar plot Density vs Quadrat
 density_quadrat_plot <- ggplot(density_quadrat, 
                                aes(x = reorder(quadrat, -avg), 
                                    y = avg, fill = impact.types)) +
@@ -238,6 +255,9 @@ density_quadrat_plot <- ggplot(density_quadrat,
 #Plot graph
 plot(density_quadrat_plot)
 ```
+
+
+
 
 # Conclusion
 What can we conclude based off these graphs?
