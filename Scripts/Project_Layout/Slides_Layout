@@ -17,7 +17,7 @@ Title: Human Impact on Ghost Crab Burrow Altercation
 
 ---- Required packages -----
 - Tidyverse
-- Magrittr
+- kableExtra
 - Knitr
 
 
