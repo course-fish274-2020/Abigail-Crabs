@@ -31,6 +31,10 @@
   - Plot of burrow size vs. distance from humans
 - ../Images/Plots/Burrow Density vs. Quad
   - Plot of burrow density vs. distance from humans
+- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0209977#:~:text=Ghost%20crabs%20have%20been%20widely,for%20management%20and%20conservation%20purposes.&text=We%20also%20found%20that%20ghost,burrows%20on%20heavily%20impacted%20beaches.
+  - Website used for analysis reference 
+- ../Images/Slide Images/ghost-crab.jpg
+  - Image of ghost crab
 
 # Directory Structure
 - Data 
