@@ -25,9 +25,11 @@ knitr::include_graphics("../Images/Slide Images/rsz_1rsz_1rsz_ocypode_quadrata_c
 ## Required Packages
 - Tidyverse
 - Knitr
-```{r load-packages, echo=FALSE, cache=TRUE}
+- kableExtra
+```{r load-packages, message=FALSE, echo=FALSE, cache=TRUE}
 library(knitr)
 library(tidyverse)
+library(kableExtra)
 ```
 
 
@@ -50,7 +52,6 @@ knitr::include_graphics("../Images/Slide Images/South_Carolina_Beaches.jpg")
 ## Important Information
 Information needed to interpret graphs
 
-Variables
 
 - HI: High human impact
 - HV: High human and vehicle impact
@@ -66,7 +67,10 @@ Looking at human impact on burrow opening diameter
 
 ## Opening Diameter vs. Impact
 Filtering and selecting data
-```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
+
+<center>
+
+```{r,echo=FALSE, message=FALSE, cache=TRUE, fig.align='center'}
 #Reading in data
 burrow_raw_data <- read.csv("../Data/Ghost_crab_burrow_architecture.csv")
 #Selecting data
@@ -79,6 +83,9 @@ diameter_impact_table <- head(diameter_impact_tibble)
 knitr::kable(diameter_impact_table, align = "lrr",
              col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
 ```
+
+<\center>
+
 
 ## Opening Diameter vs. Impact
 Graphing data
