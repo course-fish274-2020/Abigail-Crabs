@@ -80,8 +80,8 @@ diameter_impact <- burrow_raw_data %>%
 #Showing tibble table
 diameter_impact_tibble <- as_tibble(diameter_impact)
 diameter_impact_table <- head(diameter_impact_tibble)
-knitr::kable(diameter_impact_table, align = "lrr",
-             col.names = c('Site', 'Opening Diameter (mm)', 'Impact Type'))
+kbl(diameter_impact_table, align = "llr") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), )
 ```
 
 <\center>
