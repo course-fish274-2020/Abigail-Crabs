@@ -193,12 +193,12 @@ size_impact_raw_data <- read.csv("../Data/Burrow_ size_impact_types.csv")
 size_impact <- size_impact_raw_data %>%
   group_by(quadrat, impact.types) %>%
   summarise(avg = median(burrow.size))
-kbl(size_impact_select, align = "llr") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
-  kable_paper() %>%
-  scroll_box(width = "500px", height = "200px") %>%
-  kable_styling(fixed_thead = T)
+kbl(size_impact, align = "llr") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
+
+## Burrow Density vs. Quadrat
+Quadrat: area of the beach that gets increasingly closer to human development
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
@@ -207,13 +207,15 @@ density_quadrat_raw <- read.csv("../Data/Burrow_density_impact_types.csv")
 density_quadrat <- density_quadrat_raw %>%
   group_by(quadrat, impact.types) %>%
   summarise(avg = median(burrow.density))
+kbl(density_quadrat, align = "llr") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 
 ## Burrow Size and Density vs. Quadrat
 Graphing data
 ```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
- #Creating bar plot Size
+ #Bar graph for Size
 size_avg_plot <- ggplot(size_impact) +
   geom_bar(aes(x = reorder(quadrat, -avg), 
                             y = avg, fill = impact.types),
@@ -228,15 +230,6 @@ size_avg_plot <- ggplot(size_impact) +
   labs(y="Burrow Size (mm)", 
        x = "Quadrat") +
   scale_y_continuous(expand = c(0, 0))
-#Plot graph
-plot(size_avg_plot)
-```
-```{r}
-#Creating bar graph for density
-
-```
-
-```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Creating bar plot Density vs Quadrat
 density_quadrat_plot <- ggplot(density_quadrat, 
                                aes(x = reorder(quadrat, -avg), 
@@ -252,8 +245,13 @@ density_quadrat_plot <- ggplot(density_quadrat,
   labs(y="Burrow Density (m^-2)", 
        x = "Quadrat") +
   scale_y_continuous(expand = c(0, 0))
+```
+
+```{r, echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
+
 #Plot graph
 plot(density_quadrat_plot)
+plot(size_avg_plot)
 ```
 
 
