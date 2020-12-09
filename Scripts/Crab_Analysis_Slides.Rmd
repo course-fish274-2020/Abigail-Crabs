@@ -126,6 +126,9 @@ Looking at human impact on burrow density
 
 ## Density vs. Impact
 Filtering and selecting data
+
+<center>
+
 ```{r,echo=FALSE, message=FALSE, fig.align='center', cache=TRUE}
 #Reading in data
 burrow_density_raw_data <- read.csv("../Data/Burrow_density_impact_types.csv")
@@ -136,8 +139,8 @@ density_impact <- burrow_density_raw_data %>%
 #Showing tibble table
 density_impact_tibble <- as_tibble(density_impact)
 density_impact_table <- head(density_impact_tibble)
-knitr::kable(density_impact_table, 
-             col.names = c('Site', 'Impact Type', 'Burrow Density m^-2'))
+kbl(density_impact_table, align = "llr") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 #Selecting data to graph
 density_average <- density_impact %>% 
   group_by(impact.types) %>%
@@ -145,6 +148,9 @@ density_average <- density_impact %>%
 Dens_avg_df <- data.frame(density_average) %>%
   arrange(desc(impact.types))
 ```
+
+<\center>
+
 
 ## Density vs. Impact
 Graphing data
